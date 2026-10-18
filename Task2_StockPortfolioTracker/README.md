@@ -1,17 +1,19 @@
 # Stock Portfolio Tracker
 
-A simple command-line stock portfolio tracker written in Python, built as part of the CodeAlpha Python Programming internship (Task 2).
+A menu-driven command-line stock portfolio tracker written in Python, built as part of the CodeAlpha Python Programming internship (Task 2).
 
 ## Features
-- Hardcoded dictionary of stock prices (AAPL, TSLA, GOOGL, MSFT, AMZN)
-- User enters stock symbols and quantities
-- Handles invalid symbols and quantities
-- Adds up quantities if the same stock is entered more than once
-- Shows a formatted summary with the total investment value
-- Optionally saves the result to `portfolio.csv`
+- Hardcoded dictionary of current stock prices (AAPL, TSLA, GOOGL, MSFT, AMZN, NVDA, META, NFLX)
+- **Buy stocks** with a custom buy price (or use the current market price)
+- **Sell stocks** and see the realised profit/loss
+- **Average buy price** is tracked when you buy the same stock more than once
+- **Portfolio summary** with invested amount, current value, profit/loss and allocation % for each stock
+- **Save** the portfolio to `portfolio.csv` and a readable report to `portfolio_report.txt`
+- **Load** a saved portfolio back from CSV
+- Validates every input (symbols, quantities, prices, menu options)
 
 ## Concepts Used
-Dictionaries, input/output, basic arithmetic, functions, file handling (`csv`)
+Dictionaries, classes (OOP), functions, loops, input/output, arithmetic, string formatting, file handling (`csv`, `os`)
 
 ## How to Run
 Requires Python 3 (no external libraries).
@@ -20,31 +22,27 @@ Requires Python 3 (no external libraries).
 python portfolio.py
 ```
 
-## Example
+## Menu
 ```
 === Stock Portfolio Tracker ===
+1. View market prices
+2. Buy stock
+3. Sell stock
+4. View portfolio
+5. Save portfolio (CSV + TXT report)
+6. Load portfolio from CSV
+7. Exit
+```
 
-Available stocks:
-  AAPL   $180
-  TSLA   $250
-  GOOGL  $140
-  MSFT   $330
-  AMZN   $145
-
-Enter stock symbol (or 'done' to finish): AAPL
-Enter quantity of AAPL: 10
-Enter stock symbol (or 'done' to finish): TSLA
-Enter quantity of TSLA: 5
-Enter stock symbol (or 'done' to finish): done
-
-----------------------------------------
-Stock      Qty     Price         Value
-----------------------------------------
-AAPL        10       180          1800
-TSLA         5       250          1250
-----------------------------------------
-Total investment:                $3050
-
-Save result to CSV? (y/n): y
-Portfolio saved to portfolio.csv
+## Example Output
+```
+------------------------------------------------------------------------------
+Stock     Qty   Avg Buy    Price    Invested       Value         P/L     Alloc
+------------------------------------------------------------------------------
+AAPL        6    150.00      180      900.00     1080.00     +180.00     51.9%
+TSLA        4    250.00      250     1000.00     1000.00       +0.00     48.1%
+------------------------------------------------------------------------------
+Total invested: $1,900.00
+Current value:  $2,080.00
+Profit/Loss:    $+180.00 (+9.47%)
 ```
